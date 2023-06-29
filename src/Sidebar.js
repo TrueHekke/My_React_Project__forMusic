@@ -15,17 +15,17 @@ function Sidebar() {
                 </div>
             <div className="sidebar__block">
                 <div className="sidebar__list">
-                        <div className="sidebar__item">
+                        <div className="sidebar__item skeleton">
                             <a className="sidebar__link" href="#">
                                 <img className="sidebar__img" src={playlist1} alt="day's playlist"/>
                             </a>
                         </div>
-                            <div className="sidebar__item">
+                            <div className="sidebar__item skeleton">
                                 <a className="sidebar__link" href="#">
                                     <img className="sidebar__img" src={playlist2} alt="day's playlist"/>
                                 </a>
                             </div>
-                            <div className="sidebar__item">
+                            <div className="sidebar__item skeleton">
                                 <a className="sidebar__link" href="#">
                                     <img className="sidebar__img" src={playlist3} alt="day's playlist"/>
                                 </a>

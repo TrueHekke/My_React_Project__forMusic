@@ -295,6 +295,7 @@ body {
 }
 
 .filter__button {
+  position: relative;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -636,7 +637,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 92px 0 0;
+  justify-content: space-around;
+  padding: 0 92px 0 180%;
 }
 
 .player__controls {
@@ -862,4 +864,129 @@ body {
 
 .volume__progress-line {
   width: 109px;
+}
+
+.skeleton{
+  position: relative;
+  cursor: default;
+}
+
+.skeleton::after{
+  background-image: linear-gradient(
+    90deg,
+    #6d6d6d 0%, #6d6d6d 40%,
+    #ddd 0%, #ddd 55%,
+    #6d6d6d 65%, #6d6d6d 100%
+  );
+  background-size: 400%;
+  animation: skeleton 1500ms infinite;
+  content: '';
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+@keyframes skeleton{
+  from {background-position:100% 100%;}
+  to {background-position: 0 0;}
+}
+
+.popup_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.popup_author,
+.popup_genre {
+  border-radius: 12px;
+  background-color: #313131;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  padding: 10px;
+  width: 200px;
+  z-index: 1;
+  display: inline-flex;
+  padding: 34px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.popup_author ul,
+.popup_year ul,
+.popup_genre ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px; 
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #AD61FF #fff;
+}
+
+.popup_author ul::-webkit-scrollbar,
+.popup_year ul::-webkit-scrollbar,
+.popup_genre ul::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.popup_author ul::-webkit-scrollbar-thumb,
+.popup_year ul::-webkit-scrollbar-thumb,
+.popup_genre ul::-webkit-scrollbar-thumb {
+  background-color: #AD61FF; 
+}
+
+.popup_author ul::-webkit-scrollbar-track,
+.popup_year ul::-webkit-scrollbar-track,
+.popup_genre ul::-webkit-scrollbar-track {
+  background-color: #fff; 
+}
+
+.popup_author li,
+.popup_year li,
+.popup_genre li {
+  margin-bottom: 5px;
+}
+
+.filter__button.active {
+  border-color: #AD61FF;
+  color: #AD61FF;
+  cursor: pointer;
+}
+
+.popup_year{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-radius: 12px;
+  background: #313131;
+  font-weight: 400;
+  line-height: 24px;
+  color: #FFF;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  padding: 34px;
+  width: 350px;
+  z-index: 1;
+}
+
+.radio-option{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.radio-button{
+  width: 18px;
+  height: 18px;
 }

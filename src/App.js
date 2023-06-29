@@ -2,6 +2,7 @@ import MainBlock from './mainBlock';
 import './style.css';
 import './fonts/stylesheet.css';
 import Bar from './Bar';
+import RemoveSkeletonClasses from './Skeleton';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="container">
       <MainBlock/>
       <Bar/>
+      <RemoveSkeletonClasses/>
       </div>
     </div>
   );
