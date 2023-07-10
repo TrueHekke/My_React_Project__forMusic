@@ -22,9 +22,7 @@ function Playlist() {
             <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
             <div className="playlist-title__col col03">АЛЬБОМ</div>
             <div className="playlist-title__col col04">
-                <svg className="playlist-title__svg" alt="time">
-                    <use xlinkHref={watch}></use>
-                </svg>
+                <img className="playlist-title__svg" src={watch} alt = 'time'/>
             </div>
         </div>
         <div className="content__playlist playlist">

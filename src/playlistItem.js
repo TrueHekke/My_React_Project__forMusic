@@ -6,25 +6,21 @@ function PlaylistItem({ name, author, album, time}) {
     return <div className="playlist__item">
     <div className="playlist__track track">
         <div className="track__title">
-            <div className="track__title-image">
-                <svg className="track__title-svg" alt="music">
-                    <use xlinkHref= {note}></use>
-                </svg>
+            <div className="track__title-image skeleton">
+                <img className="track__title-svg" src={note} alt = 'music'/>
             </div>
-            <div className="track__title-text">
+            <div className="track__title-text skeleton">
                 <a className="track__title-link" href="http://">{ name } <span className="track__title-span"></span></a>
             </div>
         </div>
-        <div className="track__author">
+        <div className="track__author skeleton">
             <a className="track__author-link" href="http://">{ author }</a>
         </div>
-        <div className="track__album">
+        <div className="track__album skeleton">
             <a className="track__album-link" href="http://">{ album }</a>
         </div>
-        <div className="track__time">
-            <svg className="track__time-svg" alt="time">
-                <use xlinkHref={like}></use>
-            </svg>
+        <div className="track__time skeleton">
+            <img className="track__time-svg" src={like} alt = 'time'/>
             <span className="track__time-text">{ time }</span>
         </div>
     </div>
