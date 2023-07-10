@@ -1,30 +1,31 @@
 import PropTypes from 'prop-types';
 import like from './img/icon/like.svg'
 import note from './img/icon/note.svg'
+import * as PS from "./PlaylistStyles";
 
 function PlaylistItem({ name, author, album, time}) {
-    return <div className="playlist__item">
-    <div className="playlist__track track">
-        <div className="track__title">
-            <div className="track__title-image skeleton">
-                <img className="track__title-svg" src={note} alt = 'music'/>
-            </div>
-            <div className="track__title-text skeleton">
-                <a className="track__title-link" href="http://">{ name } <span className="track__title-span"></span></a>
-            </div>
-        </div>
-        <div className="track__author skeleton">
-            <a className="track__author-link" href="http://">{ author }</a>
-        </div>
-        <div className="track__album skeleton">
-            <a className="track__album-link" href="http://">{ album }</a>
-        </div>
-        <div className="track__time skeleton">
-            <img className="track__time-svg" src={like} alt = 'time'/>
-            <span className="track__time-text">{ time }</span>
-        </div>
-    </div>
-</div>
+    return <PS.PlaylistItem>
+    <PS.Track>
+        <PS.TrackTitle>
+            <PS.TrackTitleImg className="skeleton">
+                <PS.TrackImg src={note} alt = 'music'/>
+            </PS.TrackTitleImg>
+            <PS.TrackTitleText className="skeleton">
+                <PS.TrackLink href="http://">{ name } <PS.TrackSpan></PS.TrackSpan></PS.TrackLink>
+            </PS.TrackTitleText >
+        </PS.TrackTitle>
+        <PS.TrackAuthor className="skeleton">
+            <PS.AuthorLink href="http://">{ author }</PS.AuthorLink>
+        </PS.TrackAuthor>
+        <PS.TrackAlbum className="skeleton">
+            <PS.AlbumLink href="http://">{ album }</PS.AlbumLink>
+        </PS.TrackAlbum>
+        <PS.TrackTime className="skeleton">
+            <PS.TimeImg src={like} alt = 'time'/>
+            <PS.TimeText>{ time }</PS.TimeText>
+        </PS.TrackTime>
+    </PS.Track>
+</PS.PlaylistItem>
 }
 
 PlaylistItem.propTypes = {

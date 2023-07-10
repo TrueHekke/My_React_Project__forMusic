@@ -1,16 +1,17 @@
 import volume from './img/icon/volume.svg'
+import * as BS from "./BarStyles";
 
 function BarVolume() {
-    return(<div className="bar__volume-block volume">
-                <div className="volume__content">
-                    <div className="volume__image">
-                        <img className="volume__svg" src={volume} alt = 'volume'/>
-                    </div>
-                    <div className="volume__progress _btn">
-                        <input className="volume__progress-line _btn" type="range" name="range"/>
-                    </div>    
-                </div>
-            </div>
+    return(<BS.VolumeBlock>
+                <BS.VolumeContent>
+                    <BS.VolumeImgBlock>
+                        <BS.VolumeImg src={volume} alt = 'volume'/>
+                    </BS.VolumeImgBlock>
+                    <BS.VolumeProgress>
+                        <BS.ProgressLine type="range" name="range"/>
+                    </BS.VolumeProgress>    
+                </BS.VolumeContent>
+            </BS.VolumeBlock>
     )
 }
 
