@@ -1,5 +1,6 @@
 import PlaylistItem from "./playlistItem";
 import watch from "./img/icon/watch.svg";
+import * as PS from "./PlaylistStyles";
 
 const playlist = [
     { name: 'Guilt', author: 'Nero', album: 'Welcome Reality', time: '4:44' },
@@ -16,16 +17,16 @@ const playlist = [
 ];
 
 function Playlist() {
-    return(<div className="centerblock__content">
-        <div className="content__title playlist-title">
-            <div className="playlist-title__col col01">Трек</div>
-            <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-            <div className="playlist-title__col col03">АЛЬБОМ</div>
-            <div className="playlist-title__col col04">
-                <img className="playlist-title__svg" src={watch} alt = 'time'/>
-            </div>
-        </div>
-        <div className="content__playlist playlist">
+    return(<PS.Content>
+        <PS.ContentTitle>
+            <PS.TitleItem1>Трек</PS.TitleItem1>
+            <PS.TitleItem2>ИСПОЛНИТЕЛЬ</PS.TitleItem2>
+            <PS.TitleItem3>АЛЬБОМ</PS.TitleItem3>
+            <PS.TitleItem4>
+                <PS.TitleItemImg src={watch} alt = 'time'/>
+            </PS.TitleItem4>
+        </PS.ContentTitle>
+        <PS.TitlePlaylist>
         <div className="playlist">
             {playlist.map((track, index) => (
                 <PlaylistItem
@@ -37,8 +38,8 @@ function Playlist() {
                 />
             ))}
         </div>
-        </div>
-        </div>
+        </PS.TitlePlaylist>
+        </PS.Content>
     )
 }
 

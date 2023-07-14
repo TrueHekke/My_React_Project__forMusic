@@ -1,24 +1,24 @@
 import logo from "./img/logo.png";
 import BurgerMenu from "./burgerMenu";
 import { useState } from "react";
+import * as NS from "./NavigationStyles";
 
 function Navigation() {
     const [leftMenu, setLeftMenu] = useState(false);
     const visibility = () => {setLeftMenu(!leftMenu)}
-    return(<nav className="main__nav nav">
-                    <div className="nav__logo logo">
-                        <img 
-                        className="logo__image" 
+    return(<NS.Main>
+                    <NS.Logo>
+                        <NS.Image
                         src= { logo }
                         alt="logo"/>
-                    </div>
-                    <div className="nav__burger burger" onClick={visibility}>
-                        <span className="burger__line"></span>
-                        <span className="burger__line"></span>
-                        <span className="burger__line"></span>
-                    </div>
+                    </NS.Logo>
+                    <NS.Burger onClick={visibility}>
+                        <NS.BurgerLine className="burger__line"></NS.BurgerLine>
+                        <NS.BurgerLine className="burger__line"></NS.BurgerLine>
+                        <NS.BurgerLine className="burger__line"></NS.BurgerLine>
+                    </NS.Burger>
                     {leftMenu && <BurgerMenu/>}
-    </nav>
+    </NS.Main>
     )
 }
 

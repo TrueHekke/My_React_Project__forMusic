@@ -3,18 +3,19 @@ import Sidebar from "./Sidebar";
 import TrackSearch from "./trackSearch";
 import Search from "./Search";
 import Playlist from "./Playlist";
+import * as MS from "./MainStyles";
 
 function MainBlock() {
-    return(<main className="main">
+    return(<MS.Main>
     <Navigation/>
-    <div className="main__centerblock centerblock">
+    <MS.Centerblock>
         <Search/>
-        <h2 className="centerblock__h2">Треки</h2>
+        <MS.H2>Треки</MS.H2>
         <TrackSearch/>
         <Playlist/>
-    </div>
+    </MS.Centerblock>
     <Sidebar/> 
-</main>)
+</MS.Main>)
 }
 
 export default MainBlock;

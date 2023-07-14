@@ -5,37 +5,38 @@ import play from './img/icon/play.svg'
 import next from './img/icon/next.svg'
 import repeat from './img/icon/repeat.svg'
 import shuffle from './img/icon/shuffle.svg'
+import * as BS from "./BarStyles";
 
 function Bar(){
     return(
-            <div className="bar__content">
-                <div className="bar__player-progress"></div>
-                    <div className="bar__player-block">
-                        <div className="bar__player player">
-                            <div className="player__controls">
-                                <div className="player__btn-prev">
-                                    <img className="player__btn-prev-svg" src={prev} alt = 'prev'/>
-                                </div>
-                                <div className="player__btn-play _btn">
-                                    <img className="player__btn-play-svg" src={play} alt = 'play'/>
-                                </div>
-                                <div className="player__btn-next">
-                                    <img className="player__btn-next-svg" src={next} alt = 'next'/>
-                                </div>
-                                <div className="player__btn-repeat _btn-icon">
-                                    <img className="player__btn-repeat-svg" src={repeat} alt = 'repeat'/>
-                                </div>
-                                <div className="player__btn-shuffle _btn-icon">
-                                    <img className="player__btn-shuffle-svg" src={shuffle} alt = 'shuffle'/>
-                                </div>
+            <BS.Bar>
+                <BS.BarProgress></BS.BarProgress>
+                    <BS.BarPlayerBlock>
+                        <BS.BarPlayer>
+                            <BS.PlayerControls>
+                                <BS.BtnPrev>
+                                    <BS.PrevImg src={prev} alt = 'prev'/>
+                                </BS.BtnPrev>
+                                <BS.BtnPlay>
+                                    <BS.PlayImg src={play} alt = 'play'/>
+                                </BS.BtnPlay>
+                                <BS.BtnNext>
+                                    <BS.NextImg src={next} alt = 'next'/>
+                                </BS.BtnNext>
+                                <BS.BtnRepeat>
+                                    <BS.RepeatImg src={repeat} alt = 'repeat'/>
+                                </BS.BtnRepeat>
+                                <BS.BtnShuffle>
+                                    <BS.ShuffleImg src={shuffle} alt = 'shuffle'/>
+                                </BS.BtnShuffle>
                                 <BarTrack/>
                                 
                                 <BarVolume/>
-                        </div>
-                    </div>
+                        </BS.PlayerControls>
+                    </BS.BarPlayer>
                     <footer className="footer"></footer>
-                </div>
-            </div>
+                </BS.BarPlayerBlock>
+            </BS.Bar>
     )
 }
 

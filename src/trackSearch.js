@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as MS from "./MainStyles";
 
 function TrackSearch() {
     const [activeFilter, setActiveFilter] = useState(null);
@@ -6,85 +7,82 @@ function TrackSearch() {
     const handleFilterClick = (filter) => {
         setActiveFilter(filter === activeFilter ? null : filter);
     };
-    
-    return(<div className="centerblock__filter filter">
-            <div className="filter__title">Искать по:</div>
-            <div className={`filter__button button-author _btn-text ${activeFilter === "author" ? "active" : ""}`}
-            onClick={() => handleFilterClick("author")}>исполнителю</div>
-            {activeFilter === "author" && (
-                <div className="popup_wrapper">
-                    <div className="popup_author popup">
-                        <ul>
-                            <li className="author_item">Michael Jackson</li>
-                            <li className="author_item">Frank Sinatra</li>
-                            <li className="author_item">Calvin Harris</li>
-                            <li className="author_item">Zhu</li>
-                            <li className="author_item">Arctic Monkeys</li>
-                        </ul>
-                    </div>
-                </div>
-            )}
-            <div className={`filter__button button-author _btn-text ${activeFilter === "year" ? "active" : ""}`}
-            onClick={() => handleFilterClick("year")}>году выпуска</div>
-            {activeFilter === "year" && (
-                <div className="popup_wrapper">
-                    <div className="popup_year popup">
-                        <div className="radio-option">
-                            <input
-                                className="radio-button"
+
+    return(<MS.Filter>
+            <MS.FilterTitle>Искать по:</MS.FilterTitle>
+            <MS.PopupWrapper>
+                <MS.FilterBtn className={`filter__button button-author _btn-text ${activeFilter === "author" ? "active" : ""}`}
+                onClick={() => handleFilterClick("author")}>исполнителю</MS.FilterBtn>
+                {activeFilter === "author" && (
+                    <MS.PopupAuthorAndGenre>
+                        <MS.PopupList>
+                            <MS.PopupItem>Michael Jackson</MS.PopupItem>
+                            <MS.PopupItem>Frank Sinatra</MS.PopupItem>
+                            <MS.PopupItem>Calvin Harris</MS.PopupItem>
+                            <MS.PopupItem>Zhu</MS.PopupItem>
+                            <MS.PopupItem>Arctic Monkeys</MS.PopupItem>
+                        </MS.PopupList>
+                    </MS.PopupAuthorAndGenre>
+                )}
+            </MS.PopupWrapper>
+            <MS.PopupWrapper>
+                <MS.FilterBtn className={`filter__button button-author _btn-text ${activeFilter === "year" ? "active" : ""}`}
+                onClick={() => handleFilterClick("year")}>году выпуска</MS.FilterBtn>
+                {activeFilter === "year" && (
+                    <MS.PopupYear>
+                        <MS.RadioOption>
+                            <MS.RadioBtn
                                 type="radio"
                                 id="newer-songs"
                                 name="songs"
                                 value="newer"
-                        
                             />
                             <label htmlFor="newer-songs">Более новые</label>
-                        </div>
-                        <div className="radio-option">
-                            <input
-                                className="radio-button"
+                        </MS.RadioOption>
+                        <MS.RadioOption>
+                            <MS.RadioBtn
                                 type="radio"
                                 id="older-songs"
                                 name="songs"
                                 value="older"
                             />
                             <label htmlFor="older-songs">Более старые</label>
-                        </div>
-                    </div>
-                </div>
-            )}
-            <div className={`filter__button button-author _btn-text ${activeFilter === "genre" ? "active" : ""}`}
-            onClick={() => handleFilterClick("genre")}>жанру</div>
-            {activeFilter === "genre" && (
-                <div className="popup_wrapper">
-                    <div className="popup_genre popup">
-                        <ul>
-                            <li className="genre_item">Rock</li>
-                            <li className="genre_item">Pop</li>
-                            <li className="genre_item">Rap & Hip-Hop</li>
-                            <li className="genre_item">Easy Listening</li>
-                            <li className="genre_item">Dance & House</li>
-                            <li className="genre_item">Instrumental</li>
-                            <li className="genre_item">Metal</li>
-                            <li className="genre_item">Alternative</li>
-                            <li className="genre_item">Dubstep</li>
-                            <li className="genre_item">Jazz & Blues</li>
-                            <li className="genre_item">Drum & Bass</li>
-                            <li className="genre_item">Trance</li>
-                            <li className="genre_item">Chanson</li>
-                            <li className="genre_item">Ethnic</li>
-                            <li className="genre_item">Acoustic & Vocal</li>
-                            <li className="genre_item">Reggae</li>
-                            <li className="genre_item">Classical</li>
-                            <li className="genre_item">Indie Pop</li>
-                            <li className="genre_item">Speech</li>
-                            <li className="genre_item">Electropop & Disco</li>
-                            <li className="genre_item">Other</li>
-                        </ul>
-                    </div>
-                </div>
-            )}
-        </div>
+                        </MS.RadioOption>
+                    </MS.PopupYear>
+                )}
+            </MS.PopupWrapper>
+            <MS.PopupWrapper>
+                <MS.FilterBtn className={`filter__button button-author _btn-text ${activeFilter === "genre" ? "active" : ""}`}
+                onClick={() => handleFilterClick("genre")}>жанру</MS.FilterBtn>
+                {activeFilter === "genre" && (
+                    <MS.PopupAuthorAndGenre>
+                        <MS.PopupList>
+                            <MS.PopupItem>Rock</MS.PopupItem>
+                            <MS.PopupItem>Pop</MS.PopupItem>
+                            <MS.PopupItem>Rap & Hip-Hop</MS.PopupItem>
+                            <MS.PopupItem>Easy Listening</MS.PopupItem>
+                            <MS.PopupItem>Dance & House</MS.PopupItem>
+                            <MS.PopupItem>Instrumental</MS.PopupItem>
+                            <MS.PopupItem>Metal</MS.PopupItem>
+                            <MS.PopupItem>Alternative</MS.PopupItem>
+                            <MS.PopupItem>Dubstep</MS.PopupItem>
+                            <MS.PopupItem>Jazz & Blues</MS.PopupItem>
+                            <MS.PopupItem>Drum & Bass</MS.PopupItem>
+                            <MS.PopupItem>Trance</MS.PopupItem>
+                            <MS.PopupItem>Chanson</MS.PopupItem>
+                            <MS.PopupItem>Ethnic</MS.PopupItem>
+                            <MS.PopupItem>Acoustic & Vocal</MS.PopupItem>
+                            <MS.PopupItem>Reggae</MS.PopupItem>
+                            <MS.PopupItem>Classical</MS.PopupItem>
+                            <MS.PopupItem>Indie Pop</MS.PopupItem>
+                            <MS.PopupItem>Speech</MS.PopupItem>
+                            <MS.PopupItem>Electropop & Disco</MS.PopupItem>
+                            <MS.PopupItem>Other</MS.PopupItem>
+                        </MS.PopupList>
+                    </MS.PopupAuthorAndGenre>
+                )}
+            </MS.PopupWrapper>
+        </MS.Filter>
     )
 }
 

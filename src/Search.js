@@ -1,10 +1,11 @@
 import search from './img/icon/search.svg';
+import * as MS from "./MainStyles";
 
 function Search() {
-    return(<div className="centerblock__search search">
-            <img className="search__svg" src={search} alt = 'search'/>
-            <input className="search__text" type="search" placeholder="Поиск" name="search"/>
-    </div>
+    return(<MS.Search>
+            <MS.SearchImg src={search} alt = 'search'/>
+            <MS.SearchText type="search" placeholder="Поиск" name="search"/>
+    </MS.Search>
     )
 }
 
