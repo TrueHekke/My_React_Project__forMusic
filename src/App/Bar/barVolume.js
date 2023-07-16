@@ -1,4 +1,4 @@
-import volume from './volume.svg'
+import volume from '../../img/icon/volume.svg'
 import * as BS from './BarStyles'
 
 function BarVolume() {
