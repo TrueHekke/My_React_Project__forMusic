@@ -14,7 +14,18 @@ export const BarProgress = styled.div`
 width: 100%;
 height: 5px;
 background: #2E2E2E;
+backgroundColor: '#580EA2',
+height: '5px',
 `
+export const BarProgressActive = styled.div`
+`
+
+export const BarRange = styled.input`
+width: 100%;
+height: 5px;
+display:none
+`
+
 export const BarPlayerBlock = styled.div`
 height: 73px;
 display: -webkit-box;

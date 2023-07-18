@@ -1,6 +1,6 @@
-import dislike from './dislike.svg'
-import like from './like.svg'
-import note from './note.svg'
+import dislike from '../../img/icon/dislike.svg'
+import like from '../../img/icon/like.svg'
+import note from '../../img/icon/note.svg'
 import * as BS from './BarStyles'
 
 function BarTrack() {
@@ -11,10 +11,10 @@ function BarTrack() {
           <BS.TrackImg src={note} alt="music" />
         </BS.TrackPlayImg>
         <BS.TrackPlayAuthor className="skeleton">
-          <BS.AuthorLink href="http://">Ты та...</BS.AuthorLink>
+          <BS.AuthorLink href="http://">Never...</BS.AuthorLink>
         </BS.TrackPlayAuthor>
         <BS.TrackPlayAlbum className="skeleton">
-          <BS.AlbumLink href="http://">Баста</BS.AlbumLink>
+          <BS.AlbumLink href="http://">Rick Astley</BS.AlbumLink>
         </BS.TrackPlayAlbum>
       </BS.TrackContain>
       <BS.TrackLikeAndDis>
