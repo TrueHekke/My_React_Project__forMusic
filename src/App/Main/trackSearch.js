@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import * as MS from './MainStyles'
+import { useThemeContext } from '../themes'
+
 
 function TrackSearch() {
   const [activeFilter, setActiveFilter] = useState(null)
@@ -8,6 +10,9 @@ function TrackSearch() {
     setActiveFilter(filter === activeFilter ? null : filter)
   }
 
+  const {theme} = useThemeContext();
+  const borderStyle = `2px solid ${theme.color}`;
+  
   return (
     <MS.Filter>
       <MS.FilterTitle>Искать по:</MS.FilterTitle>
@@ -16,13 +21,14 @@ function TrackSearch() {
           className={`filter__button button-author _btn-text ${
             activeFilter === 'author' ? 'active' : ''
           }`}
+          style ={{border: borderStyle}}
           onClick={() => handleFilterClick('author')}
         >
           исполнителю
         </MS.FilterBtn>
         {activeFilter === 'author' && (
-          <MS.PopupAuthorAndGenre>
-            <MS.PopupList>
+          <MS.PopupAuthorAndGenre style={{backgroundColor:theme.background}}>
+            <MS.PopupList >
               <MS.PopupItem>Michael Jackson</MS.PopupItem>
               <MS.PopupItem>Frank Sinatra</MS.PopupItem>
               <MS.PopupItem>Calvin Harris</MS.PopupItem>
@@ -37,12 +43,13 @@ function TrackSearch() {
           className={`filter__button button-author _btn-text ${
             activeFilter === 'year' ? 'active' : ''
           }`}
+          style ={{border: borderStyle}}
           onClick={() => handleFilterClick('year')}
         >
           году выпуска
         </MS.FilterBtn>
         {activeFilter === 'year' && (
-          <MS.PopupYear>
+          <MS.PopupYear >
             <MS.RadioOption>
               <MS.RadioBtn
                 type="radio"
@@ -50,7 +57,7 @@ function TrackSearch() {
                 name="songs"
                 value="newer"
               />
-              <label htmlFor="newer-songs">Более новые</label>
+              <label htmlFor="newer-songs"style={{color:theme.color}}>Более новые</label>
             </MS.RadioOption>
             <MS.RadioOption>
               <MS.RadioBtn
@@ -59,7 +66,7 @@ function TrackSearch() {
                 name="songs"
                 value="older"
               />
-              <label htmlFor="older-songs">Более старые</label>
+              <label htmlFor="older-songs" style={{color:theme.color}}>Более старые</label>
             </MS.RadioOption>
           </MS.PopupYear>
         )}
@@ -69,12 +76,14 @@ function TrackSearch() {
           className={`filter__button button-author _btn-text ${
             activeFilter === 'genre' ? 'active' : ''
           }`}
+          style ={{border: borderStyle}}
           onClick={() => handleFilterClick('genre')}
         >
           жанру
         </MS.FilterBtn>
         {activeFilter === 'genre' && (
-          <MS.PopupAuthorAndGenre>
+          <MS.PopupAuthorAndGenre style={{
+            backgroundColor:theme.background}}>
             <MS.PopupList>
               <MS.PopupItem>Rock</MS.PopupItem>
               <MS.PopupItem>Pop</MS.PopupItem>

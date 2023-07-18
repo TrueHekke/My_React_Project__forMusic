@@ -2,8 +2,11 @@ import dislike from '../../img/icon/dislike.svg'
 import like from '../../img/icon/like.svg'
 import note from '../../img/icon/note.svg'
 import * as BS from './BarStyles'
+import { useThemeContext } from '../themes'
 
 function BarTrack() {
+  const {theme} = useThemeContext();
+
   return (
     <BS.TrackPlay>
       <BS.TrackContain>
@@ -11,10 +14,10 @@ function BarTrack() {
           <BS.TrackImg src={note} alt="music" />
         </BS.TrackPlayImg>
         <BS.TrackPlayAuthor className="skeleton">
-          <BS.AuthorLink href="http://">Never...</BS.AuthorLink>
+          <BS.AuthorLink style={{color:theme.color}} href="http://">Never...</BS.AuthorLink>
         </BS.TrackPlayAuthor>
         <BS.TrackPlayAlbum className="skeleton">
-          <BS.AlbumLink href="http://">Rick Astley</BS.AlbumLink>
+          <BS.AlbumLink style={{color:theme.color}} href="http://">Rick Astley</BS.AlbumLink>
         </BS.TrackPlayAlbum>
       </BS.TrackContain>
       <BS.TrackLikeAndDis>

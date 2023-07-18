@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Main = styled.nav`
 width: 244px;
-background-color: #181818;
 padding: 20px 0 20px 36px;
 `
 export const Logo = styled.div`
@@ -55,4 +54,9 @@ line-height: 24px;
 export const Menu = styled.div`
 display: block;
 visibility: visible;
+`
+export const MenuImg = styled.img`
+cursor:pointer;
+width: 39px;
+height: 39px;
 `
