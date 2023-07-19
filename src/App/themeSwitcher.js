@@ -14,7 +14,7 @@ const { theme, toggleTheme } = useThemeContext();
     toggleTheme();
   };
 
-  const themeBtnImage = isDarkTheme ? ThemeBtnLight : ThemeBtnDark;
+  const themeBtnImage = isDarkTheme ? ThemeBtnDark : ThemeBtnLight;
 
   return (
     <NS.MenuImg
