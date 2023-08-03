@@ -35,8 +35,8 @@ function Bar() {
     setCurrentTime(audioRef.current.currentTime);
   };
 
-  const handleSeek = (e) => {
-    const seekTime = parseFloat(e.target.value);
+  const handleSeek = () => {
+    const seekTime = parseFloat(this.target.value);
     setCurrentTime(seekTime);
     audioRef.current.currentTime = seekTime;
   };
@@ -47,11 +47,9 @@ function Bar() {
     };
 
     audioRef.current.addEventListener('loadedmetadata', durationLoaded);
-
-    return () => {
-      audioRef.current.removeEventListener('loadedmetadata', durationLoaded);
-    };
   }, []);
+
+
 
   const calculateProgressBarWidth = () => {
     const progressBarWidth = (currentTime / duration) * 100;

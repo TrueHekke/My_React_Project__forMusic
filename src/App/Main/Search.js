@@ -7,7 +7,7 @@ function Search() {
 
   return (
     <MS.Search>
-      <MS.SearchImg src={search} alt="search"  style={{fill:theme.color}}/>
+      <MS.SearchImg src={search} alt="search" />
       <MS.SearchText type="search" placeholder="Поиск" name="search" style={{color:theme.color}}/>
     </MS.Search>
   )

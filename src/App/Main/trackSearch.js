@@ -1,14 +1,30 @@
-import { useState } from 'react'
+import axios from 'axios';
+import { useState,useEffect } from 'react'
 import * as MS from './MainStyles'
 import { useThemeContext } from '../themes'
 
 
 function TrackSearch() {
+  const [track, setTrack] = useState([]);
   const [activeFilter, setActiveFilter] = useState(null)
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter === activeFilter ? null : filter)
   }
+
+  useEffect(() => {
+    const fetchPlaylist = async () => {
+      try {
+        const response = await axios.get('https://painassasin.online/catalog/track/all/');
+        setTrack(response.data);
+        console.log(response)
+      } catch (error) {
+        console.error('Ошибка при получении списка авторов:', error);
+      }
+    };
+
+    fetchPlaylist();
+  }, []);
 
   const {theme} = useThemeContext();
   const borderStyle = `2px solid ${theme.color}`;
@@ -29,12 +45,20 @@ function TrackSearch() {
         {activeFilter === 'author' && (
           <MS.PopupAuthorAndGenre style={{backgroundColor:theme.background}}>
             <MS.PopupList >
-              <MS.PopupItem>Michael Jackson</MS.PopupItem>
-              <MS.PopupItem>Frank Sinatra</MS.PopupItem>
-              <MS.PopupItem>Calvin Harris</MS.PopupItem>
-              <MS.PopupItem>Zhu</MS.PopupItem>
-              <MS.PopupItem>Arctic Monkeys</MS.PopupItem>
-            </MS.PopupList>
+            {(() => {
+              const uniqueAuthors = new Set();
+
+              track.forEach((track) => {
+              if (track.author && track.author !== '-') {
+              uniqueAuthors.add(track.author);
+            }
+          });
+
+          return Array.from(uniqueAuthors).map((author, index) => (
+              <MS.PopupItem key={index}>{author}</MS.PopupItem>
+           ));
+          })()}
+          </MS.PopupList>
           </MS.PopupAuthorAndGenre>
         )}
       </MS.PopupWrapper>
@@ -85,27 +109,19 @@ function TrackSearch() {
           <MS.PopupAuthorAndGenre style={{
             backgroundColor:theme.background}}>
             <MS.PopupList>
-              <MS.PopupItem>Rock</MS.PopupItem>
-              <MS.PopupItem>Pop</MS.PopupItem>
-              <MS.PopupItem>Rap & Hip-Hop</MS.PopupItem>
-              <MS.PopupItem>Easy Listening</MS.PopupItem>
-              <MS.PopupItem>Dance & House</MS.PopupItem>
-              <MS.PopupItem>Instrumental</MS.PopupItem>
-              <MS.PopupItem>Metal</MS.PopupItem>
-              <MS.PopupItem>Alternative</MS.PopupItem>
-              <MS.PopupItem>Dubstep</MS.PopupItem>
-              <MS.PopupItem>Jazz & Blues</MS.PopupItem>
-              <MS.PopupItem>Drum & Bass</MS.PopupItem>
-              <MS.PopupItem>Trance</MS.PopupItem>
-              <MS.PopupItem>Chanson</MS.PopupItem>
-              <MS.PopupItem>Ethnic</MS.PopupItem>
-              <MS.PopupItem>Acoustic & Vocal</MS.PopupItem>
-              <MS.PopupItem>Reggae</MS.PopupItem>
-              <MS.PopupItem>Classical</MS.PopupItem>
-              <MS.PopupItem>Indie Pop</MS.PopupItem>
-              <MS.PopupItem>Speech</MS.PopupItem>
-              <MS.PopupItem>Electropop & Disco</MS.PopupItem>
-              <MS.PopupItem>Other</MS.PopupItem>
+            {(() => {
+              const uniqueGenres = new Set();
+
+              track.forEach((track) => {
+              if (track.genre && track.genre !== '-') {
+                uniqueGenres.add(track.genre);
+            }
+            });
+
+          return Array.from(uniqueGenres).map((genre, index) => (
+              <MS.PopupItem key={index}>{genre}</MS.PopupItem>
+           ));
+          })()}
             </MS.PopupList>
           </MS.PopupAuthorAndGenre>
         )}
