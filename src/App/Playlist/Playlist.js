@@ -1,61 +1,26 @@
+import { useGetAllTracksQuery } from '../../store/services/music';
 import PlaylistItem from './playlistItem'
 import watch from './watch.svg'
 import * as PS from './PlaylistStyles'
 
-const playlist = [
-  { name: 'Guilt', author: 'Nero', album: 'Welcome Reality', time: '4:44' },
-  {
-    name: 'Elektro',
-    author: 'Dynoro, Outwork, Mr. Gee',
-    album: 'Elektro',
-    time: '2:22',
-  },
-  { name: 'I’m Fire', author: 'Ali Bakgor', album: 'I’m Fire', time: '2:22' },
-  {
-    name: 'Non Stop',
-    author: 'Стоункат, Psychopath',
-    album: 'Non Stop',
-    time: '4:12',
-  },
-  {
-    name: 'Run Run',
-    author: 'Jaded, Will Clarke, AR/CO',
-    album: 'Run Run',
-    time: '2:54',
-  },
-  {
-    name: 'Eyes on Fire',
-    author: 'Blue Foundation, Zeds Dead',
-    album: 'Eyes on Fire',
-    time: '5:20',
-  },
-  {
-    name: 'Mucho Bien',
-    author: 'HYBIT, Mr. Black, Offer Nissim, Hi Profile',
-    album: 'Mucho Bien',
-    time: '3:41',
-  },
-  {
-    name: 'Knives n Cherries',
-    author: 'minthaze',
-    album: 'Captivating',
-    time: '1:48',
-  },
-  {
-    name: 'How Deep Is Your Love',
-    author: 'Calvin Harris, Disciples',
-    album: 'How Deep Is Your Love',
-    time: '3:32',
-  },
-  {
-    name: 'Morena',
-    author: 'Tom Boxer',
-    album: 'Soundz Made in Romania',
-    time: '3:36',
-  }
-]
 
 function Playlist() {
+  const { data, error, isLoading } = useGetAllTracksQuery();
+
+  const isEmptyList = !isLoading && !data?.length;
+
+   if (isLoading) {
+     return <p>Loading...</p>;
+   }
+
+   if (error) {
+     return <p>{error.message}</p>;
+   }
+
+   if (isEmptyList) {
+     return <p>No music today :C</p>;
+   }
+  
   return (
     <PS.Content>
       <PS.ContentTitle>
@@ -67,17 +32,20 @@ function Playlist() {
         </PS.TitleItem4>
       </PS.ContentTitle>
       <PS.TitlePlaylist>
-        <div className="playlist">
-          {playlist.map((track, index) => (
-            <PlaylistItem
-              key={index}
-              name={track.name}
-              author={track.author}
-              album={track.album}
-              time={track.time}
-            />
-          ))}
-        </div>
+        <PS.PlaylistContainer>
+          <PS.Playlist className="playlist" >
+            {data.map((track, index) => (
+              <PlaylistItem
+                key={index}
+                name={track.name}
+                author={track.author}
+                album={track.album}
+                time={track.duration_in_seconds}
+                trackId={index}
+              />
+            ))}
+          </PS.Playlist>
+        </PS.PlaylistContainer>
       </PS.TitlePlaylist>
     </PS.Content>
   )

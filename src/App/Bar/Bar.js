@@ -8,10 +8,12 @@ import repeat from '../../img/icon/repeat.svg'
 import shuffle from '../../img/icon/shuffle.svg'
 import pause from '../../img/icon/pause.svg'
 import * as BS from './BarStyles'
-import { useRef, useState, useEffect} from 'react';
+import { useRef, useState, useEffect} from 'react'
+import { useThemeContext } from '../themes'
 
 
 function Bar() {
+  const {theme} = useThemeContext();
 
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -33,8 +35,8 @@ function Bar() {
     setCurrentTime(audioRef.current.currentTime);
   };
 
-  const handleSeek = (e) => {
-    const seekTime = parseFloat(e.target.value);
+  const handleSeek = () => {
+    const seekTime = parseFloat(this.target.value);
     setCurrentTime(seekTime);
     audioRef.current.currentTime = seekTime;
   };
@@ -45,11 +47,9 @@ function Bar() {
     };
 
     audioRef.current.addEventListener('loadedmetadata', durationLoaded);
-
-    return () => {
-      audioRef.current.removeEventListener('loadedmetadata', durationLoaded);
-    };
   }, []);
+
+
 
   const calculateProgressBarWidth = () => {
     const progressBarWidth = (currentTime / duration) * 100;
@@ -63,7 +63,7 @@ function Bar() {
   };
   
   return (
-    <BS.Bar>
+    <BS.Bar style={{backgroundColor:theme.background}}>
       <BS.BarProgress>
         <BS.BarProgressActive style={progressBarStyle}/>
         <BS.BarRange 

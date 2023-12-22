@@ -83,8 +83,20 @@ display: flex;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-overflow-y: auto;
 `
+export const Playlist = styled.div`
+`
+
+export const PlaylistContainer = styled.div`
+  max-height: 600px; 
+  overflow-y: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  ::-webkit-scrollbar {
+    display: none; 
+  }
+`
+
 export const PlaylistItem = styled.div`
 width: 100%;
 display: block;
@@ -197,6 +209,7 @@ height: 12px;
 margin-right: 17px;
 fill: transparent;
 stroke: #696969;
+cursor:pointer;
 `
 export const TimeText = styled.span`
 font-style: normal;
@@ -205,4 +218,13 @@ font-size: 16px;
 line-height: 24px;
 text-align: right;
 color: #696969;
+`
+export const H2 = styled.h2`
+сolor: "#FFFFFF";
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 72px;
+letter-spacing: -0.8px;
+margin-bottom: 45px;
 `

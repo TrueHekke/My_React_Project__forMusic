@@ -40,7 +40,6 @@ export const SearchImg = styled.img`
 width: 17px;
 height: 17px;
 margin-right: 5px;
-stroke: #FFFFFF;
 fill: transparent;
 `
 
@@ -55,11 +54,9 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-color: #FFFFFF;
 
 ::placeholder {
     background-color: transparent;
-    color: #FFFFFF;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -149,7 +146,6 @@ display: inline-block;
 `
 export const PopupAuthorAndGenre = styled.div`
 border-radius: 12px;
-background-color: #313131;
 position: absolute;
 top: calc(100% + 5px);
 left: 0;
@@ -192,10 +188,8 @@ display: flex;
 flex-direction: row;
 gap: 20px;
 border-radius: 12px;
-background: #313131;
 font-weight: 400;
 line-height: 24px;
-color: #FFF;
 position: absolute;
 top: calc(100% + 5px);
 left: 0;

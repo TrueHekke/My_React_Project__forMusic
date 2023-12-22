@@ -108,6 +108,7 @@ color: #FFFFFF;
 `
 
 export const H2 = styled.h2`
+сolor: "#FFFFFF";
 font-style: normal;
 font-weight: 400;
 font-size: 64px;

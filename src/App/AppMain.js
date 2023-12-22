@@ -4,12 +4,14 @@ import Bar from './Bar/Bar'
 import RemoveSkeletonClasses from './Skeleton'
 import { createGlobalStyle } from 'styled-components'
 import * as AS from './AppStyles'
+import { useState } from 'react'
+import {themes, ThemeContext} from './themes'
+
 export const GlobalStyle = createGlobalStyle`
 body{
   width: 100%;
   height: 100%;
   font-family: 'StratosSkyeng', sans-serif;
-  color: #FFFFFF;
 }
 
 @font-face {
@@ -99,8 +101,17 @@ ul li {
 `
 
 const App = () => {
+  const [currentTheme, setCurrentTheme] = useState(themes.dark);
+
+  const toggleTheme = () => {
+    if (currentTheme === themes.light) {
+      setCurrentTheme(themes.dark);
+    } else {
+      setCurrentTheme(themes.light);
+    }
+  };
   return (
-    <>
+    <ThemeContext.Provider value={{theme: currentTheme,toggleTheme }}>
       <GlobalStyle />
       <AS.Wrapper>
         <AS.Container>
@@ -109,7 +120,7 @@ const App = () => {
           <RemoveSkeletonClasses />
         </AS.Container>
       </AS.Wrapper>
-    </>
+    </ThemeContext.Provider>
   )
 }
 

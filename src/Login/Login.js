@@ -1,28 +1,62 @@
-import logoLogin from '../img/logoLogin.png'
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useGetLoginMutation, useGetTokenMutation } from '../store/services/music';
+import { NavLink, Navigate } from 'react-router-dom';
 
-const App = () => {
-return(
-    <div>
-        <div>
-            <div>
-                <img src={logoLogin} alt="logo"/>
-            </div>
-            <div>
-                <input type="text" placeholder="Логин" name="login"/>
-            </div>
-            <div>
-                <input type="password" placeholder="Пароль" name="password"/>
-            </div>
-            <NavLink to = "/">
-                <input type="button" placeholder="Войти" name="buttonLog" />
-            </NavLink>
-            <NavLink to = "/registration">
-                <input type="button" placeholder="Зарегистрироваться" name="buttonReg" />
-            </NavLink>
-        </div>
-    </div>
-)
-}
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-export default App
+  const [loginMutation] = useGetLoginMutation();
+  const [getTokenMutation] = useGetTokenMutation();
+
+  const handleLogin = async () => {
+    try {
+      await loginMutation({ email, password });
+      const tokenResponse = await getTokenMutation({ email, password });
+      
+      const accessToken = tokenResponse.data.access;
+      
+      if (accessToken) {
+        localStorage.setItem('accessToken', accessToken);
+      }
+
+      setIsLoggedIn(true);
+      setLoginError(null);
+    } catch (error) {
+      // Обработка ошибки аутентификации
+      setLoginError(error.message);
+    }
+  };
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />; // Редирект на главную страницу при успешном входе
+  }
+
+  return (
+    <form>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+        autoComplete="username"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Пароль"
+        autoComplete="current-password"
+      />
+      <button onClick={ handleLogin }>Войти</button>
+      <NavLink to="/registration">
+        <button>Регистрация</button>
+      </NavLink>
+      {loginError && <p>{loginError}</p>}
+    </form>
+  );
+};
+
+export default Login;

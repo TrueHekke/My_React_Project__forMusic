@@ -215,7 +215,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-color: #FFFFFF;
 white-space: nowrap;
 `
 export const TrackPlayAlbum = styled.div`
@@ -227,7 +226,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 13px;
 line-height: 24px;
-color: #FFFFFF;
 `
 export const TrackLikeAndDis = styled.div`
 display: -webkit-box;

@@ -15,7 +15,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/login" element={<Log/>} />
       <Route path="/registration" element={<Reg/>} />
-      <Route element={<ProtectedRoute redirectPath="/" isAllowed= { token } />}>
+      <Route element={<ProtectedRoute redirectPath="/login" isAllowed= { token } />}>
         <Route path="/favorites" element={<MyPersonality/>} />
         <Route path="/" element={<Main />} />
         <Route path="/category/:id" element={<TrackList/>} />
